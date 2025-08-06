@@ -4,5 +4,14 @@
   ],
   "rules": {
     "camelcase": "off",
+    "no-useless-constructor": "off",
+    "prettier/prettier": "off",
+    "no-multiple-empty-lines": [
+      "error",
+      {
+        "max": 1,
+        "maxEOF": 0
+      }
+    ]
   }
 }
