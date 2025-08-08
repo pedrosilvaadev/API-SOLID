@@ -4,6 +4,7 @@ import { randomUUID } from 'crypto'
 import { Decimal } from 'generated/prisma/runtime/library'
 
 export class InMemoryGymsRepository implements GymsRepository {
+
   public items: Gym[] = []
 
   async create(data: Prisma.GymCreateInput): Promise<Gym> {
@@ -30,5 +31,9 @@ export class InMemoryGymsRepository implements GymsRepository {
     }
 
     return gym
+  }
+
+  async searchMany(query: string, page: number): Promise<Gym[]> {
+    return this.items.filter((item) => item.name.includes(query)).slice((page - 1) * 20, page * 20)
   }
 }
